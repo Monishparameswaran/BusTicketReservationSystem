@@ -4,18 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e508993-c906-44f5-8776-5253e73d6130" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BusReservationSystem.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdminInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Booking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Bus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UserInterface.java" afterDir="false" />
+    <list default="true" id="6e508993-c906-44f5-8776-5253e73d6130" name="Changes" comment="added booking class logic">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_java_8_0_13.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DatabaseConnect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tables and DB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BusReservationSystem.iml" beforeDir="false" afterPath="$PROJECT_DIR$/BusReservationSystem.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Booking.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +30,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Main.java" root0="SKIP_INSPECTION" />
+  </component>
   <component name="ProjectId" id="2di6FqQ7tbvehYfsFrTf9gsOVVS" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -45,8 +45,12 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "onboarding.tips.debug.path": "/home/monish/IdeaProjects/BusReservationSystem/src/Main.java"
+    "last_opened_file_path": "/home/monish/Downloads/jar_files/mysql-connector-java-8.0.13.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -58,6 +62,64 @@
       <option name="presentableId" value="Default" />
       <updated>1710478455074</updated>
     </task>
+    <task id="LOCAL-00001" summary="Created interfaces for admin and user">
+      <created>1710504889009</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710504889009</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added booking class logic">
+      <created>1710515789297</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710515789297</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added booking class logic">
+      <created>1710515824882</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1710515824882</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added booking class logic">
+      <created>1710515838967</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1710515838967</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Created interfaces for admin and user" />
+    <MESSAGE value="added booking class logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="added booking class logic" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/UserInterface.java</url>
+          <line>3</line>
+          <properties class="UserInterface" method="bookTickets">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/Bus.java</url>
+          <line>15</line>
+          <properties class="Bus" method="&lt;init&gt;">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
