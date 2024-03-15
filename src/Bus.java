@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 public class Bus implements AdminInterface{
@@ -13,11 +14,11 @@ public class Bus implements AdminInterface{
     static{
         in=new Scanner(System.in);
     }
-    Bus(List<Bus>buses){
+    Bus(List<Bus>buses) throws SQLException{
        super();
        addBus(buses);
     }
-    public  void addBus(List<Bus>buses){
+    public  void addBus(List<Bus>buses) {
         System.out.print("Please enter Id of new Bus: ");
         setName(in.nextInt());
         System.out.println();
@@ -30,7 +31,15 @@ public class Bus implements AdminInterface{
         System.out.println();
         System.out.print("Enter price per ticket: ");
         setPricePerTicket(in.nextInt());
-        buses.add(this);
+//        buses.add(this);
+        BusDAO busDAO=new BusDAO();
+        try{
+            if(busDAO.insert(this)) System.out.println("Successfully added the bus");
+            else System.out.println("Cannot add the bus");
+        }catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public int getProfitPerBus() {
@@ -44,12 +53,18 @@ public class Bus implements AdminInterface{
     public static void removeBus(List<Bus>buses){
         System.out.print("Enter bus id: ");
         int id=in.nextInt();
-        for(Bus b:buses){
-            if(b.getName()==id){
-                buses.remove(b);
-                System.out.println("Bus removed Successfully");
-                break;
-            }
+//        for(Bus b:buses){
+//            if(b.getName()==id){
+//                buses.remove(b);
+//                System.out.println("Bus removed Successfully");
+//                break;
+//            }
+//        }
+        try{
+            if(BusDAO.remove(id)) System.out.println("Successfully removed the bus");
+            else System.out.println("Cannot remove bus details,internal error!");
+        }catch(SQLException e){
+            System.out.println(e);
         }
     }
 
@@ -71,16 +86,24 @@ public class Bus implements AdminInterface{
 
     public static void generateReport(List<Bus>buses) {
         System.out.println("-----------------Bus REPORT----------------------------");
-        for(Bus b:buses){
-            b.setProfitPerBus((getTotCapacity()-b.getCapacity())*b.getPricePerTicket());
-            setTotalEarnings(getTotalEarnings()+b.getProfitPerBus());
-            System.out.println("--------------------------------------------");
-            System.out.println("Bus no: "+b.getName());
-            System.out.println("Earnings: "+b.getProfitPerBus());
-            System.out.println("Empty Seats: "+b.getCapacity());
-            System.out.println("-------------------------------------------");
-
+//        for(Bus b:buses){
+//            b.setProfitPerBus((getTotCapacity()-b.getCapacity())*b.getPricePerTicket());
+//            setTotalEarnings(getTotalEarnings()+b.getProfitPerBus());
+//            System.out.println("--------------------------------------------");
+//            System.out.println("Bus no: "+b.getName());
+//            System.out.println("Earnings: "+b.getProfitPerBus());
+//            System.out.println("Empty Seats: "+b.getCapacity());
+//            System.out.println("-------------------------------------------");
+//
+//        }
+        try{
+            System.out.println("-------Report For Admin-------------");
+            BusDAO.getBusDetailsForAdmin();
+            System.out.println("-------------------------------------");
+        }catch(SQLException e){
+            System.out.println(e);
         }
+
         System.out.println("Total Earnings: "+ Bus.getTotalEarnings());
         System.out.println();
         System.out.println("--------------------------------------------------");
@@ -125,15 +148,22 @@ public class Bus implements AdminInterface{
         this.AC = AC;
     }
     public static void getBusDetails(List<Bus>bus){
-        System.out.println("----------------------------------");
-        for(Bus b:bus){
-            System.out.println("Bus no: "+b.getName());
-            System.out.println("Capacity: "+b.getCapacity());
-            System.out.println("PricePerTicket: "+b.getPricePerTicket());
-            System.out.println("AC: "+b.getAC());
-            System.out.println();
+        System.out.println("----------------------Bus Details for Customer----------------------------------------");
+//        for(Bus b:bus){
+//            System.out.println("Bus no: "+b.getName());
+//            System.out.println("Capacity: "+b.getCapacity());
+//            System.out.println("PricePerTicket: "+b.getPricePerTicket());
+//            System.out.println("AC: "+b.getAC());
+//            System.out.println();
+//        }
+        try{
+            BusDAO.getBusDetailsForCustomer();
         }
-        System.out.println("----------------------------------");
+        catch(Exception e){
+            System.out.println(e);
+        }
+
+        System.out.println("-------------------------------------------------------");
     }
 
 

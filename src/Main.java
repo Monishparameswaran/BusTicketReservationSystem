@@ -2,6 +2,7 @@
 // then press Enter. You can now see whitespace characters in your code.
 
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -38,7 +39,7 @@ public class Main {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         List<Bus>bus=new ArrayList<>();
         List<Booking>bookings=new ArrayList<>();

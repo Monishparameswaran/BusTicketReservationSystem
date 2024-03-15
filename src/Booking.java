@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.*;
 
 class Pair{
@@ -7,6 +8,8 @@ class Pair{
 
 }
 class Booking implements UserInterface {
+
+
     private String nameOfUser;
     private static int ticketId;
     private static Map<Integer,Pair>mp;
@@ -45,6 +48,13 @@ class Booking implements UserInterface {
            System.out.println("Cannot book,The seats are unavailable!");
        }
    }
+    public static int getTicketId() {
+        return ticketId;
+    }
+
+    public static void setTicketId(int ticketId) {
+        Booking.ticketId = ticketId;
+    }
     public void getBusDetails(List<Bus>bus) {
 
         Bus.getBusDetails(bus);
@@ -69,12 +79,20 @@ class Booking implements UserInterface {
         return busNo;
     }
 
+    public List<Integer> getSeatNo() {
+        return seatNo;
+    }
+
+    public void setSeatNo(int a) {
+        seatNo.add(a);
+    }
+
     public void setBusNo(int busNo) {
         this.busNo = busNo;
     }
 
     private boolean isAvailable(List<Bus>bus){
-       for(Bus b:bus){
+       /*for(Bus b:bus){
            if(b.getCapacity()>=this.seats){
                this.busNo=b.getName();
                b.setCapacity(b.getCapacity()-this.seats);
@@ -90,7 +108,13 @@ class Booking implements UserInterface {
                Bus.setTotalEarnings(Bus.getTotalEarnings()+totalCost);
                return true;
            }
-       }
+       }*/
+        try{
+            return BusBook.BusBookIfAvailable(this);
+        }catch(SQLException e){
+            System.out.println(e);
+        }
+
        return false;
    }
 
@@ -115,7 +139,6 @@ class Booking implements UserInterface {
        for(Bus b:bus){
            if(b.getName()==mp.get(bookingId).busNo){
                b.setCapacity(b.getCapacity()+mp.get(bookingId).seats);
-
                System.out.println("Cancellation success!");
                System.out.println();
                break;

@@ -1,4 +1,6 @@
+import java.util.List;
+
 public interface AdminInterface {
-    void addBus();
-    void removeBus();
+    void addBus(List<Bus> buses);
+    static void removeBus(){}
 }

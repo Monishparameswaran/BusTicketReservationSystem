@@ -1,0 +1,42 @@
+
+
+ private int id ;
+    private int seatNo=333;
+    private static int totCapacity;
+    private  int capacity;
+    private  int pricePerTicket;
+    private boolean AC;
+    private int profitPerBus;
+    private static int totalEarnings;
+To create Bus table
+  create table bus(id int PRIMARY KEY AUTO_INCREMENT,seatNo int DEFAULT 332,totCapacity int NOT NULL,capacity int,AC bool,profitPerBus int,totalEarnings int,pricePerTicket int);
+  insert into bus values(?,?,?,?,?,?)
+                ps.setInt(1, seatNo);
+                 ps.setInt(2, totCapacity);
+                 ps.setInt(3, capacity);
+                ps.setBoolean(4, AC);
+                 ps.setInt(5, profitPerBus);
+                 ps.setInt(6, totalEarnings);
+      int rowsInserted = ps.executeUpdate();
+
+
+    private String nameOfUser;
+    private static int ticketId;
+    private static Map<Integer,Pair>mp;
+    private static final Scanner in;
+    static{
+        ticketId=23413;
+        mp=new HashMap<>();
+       in=new Scanner(System.in);
+    }
+    private int busNo;
+    private int totalCost;
+    private int seats;
+
+    private List<Integer>seatNo;
+To create Customer table
+  create table booking(ticketId INT DEFAULT 23413 PRIMARY KEY AUTOINCREMENT,nameOfUser varchar(30),busNo int,seats int,totalCost int,seatNo varchar(255));
+
+To create admin Table
+   create table admin(username varchar(30),password varchar(30) not null);
+   insert into admin values("Monish","1234");
