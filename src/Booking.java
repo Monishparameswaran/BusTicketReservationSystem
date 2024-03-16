@@ -25,11 +25,14 @@ class Booking implements UserInterface {
 
     private List<Integer>seatNo;
    private boolean AC;
+   BusBook busbook;
    Booking(){
        super();
    }
    Booking(List<Bus>bus,List<Booking>bookingList){
        super();
+       seatNo=new ArrayList<>();
+       busbook=new BusBook();
        bookTickets(bus,bookingList);
    }
    public void bookTickets(List<Bus>bus,List<Booking>bookingList){
@@ -41,8 +44,21 @@ class Booking implements UserInterface {
        System.out.println("Enter AC need true or false");
        setAC(in.nextBoolean());
        if(isAvailable(bus)){
-           bookingList.add(this);
-           generateTicket();
+//           bookingList.add(this);
+           try{
+               busbook.bookTicket(this);
+           }catch(Exception e){
+               System.out.println("cannot insert at booking DB");
+//               System.out.println(e);
+           }
+
+           try{
+               busbook.generateTicket();
+           }
+           catch(Exception e){
+               System.out.println("cannot able generate ticket,server error!");
+           }
+//           generateTicket();
        }
        else{
            System.out.println("Cannot book,The seats are unavailable!");
@@ -92,30 +108,31 @@ class Booking implements UserInterface {
     }
 
     private boolean isAvailable(List<Bus>bus){
-       /*for(Bus b:bus){
-           if(b.getCapacity()>=this.seats){
-               this.busNo=b.getName();
-               b.setCapacity(b.getCapacity()-this.seats);
-               int no=b.getSeatNo();
-               seatNo=new ArrayList<>();
-               ticketId++;
-               mp.put(ticketId,new Pair(this.busNo,this.seats));
-               for(int i=0;i<seats;i++)seatNo.add(no++);
-               setTotalCost(b.getPricePerTicket()*seats);
-               b.setSeatNo(b.getSeatNo()+seats);
-
-               b.setProfitPerBus(b.getProfitPerBus()+totalCost);
-               Bus.setTotalEarnings(Bus.getTotalEarnings()+totalCost);
-               return true;
-           }
-       }*/
+//        for(Bus b:bus){
+//           if(b.getCapacity()>=this.seats){
+//               this.busNo=b.getName();
+//               b.setCapacity(b.getCapacity()-this.seats);
+//               int no=b.getSeatNo();
+//               seatNo=new ArrayList<>();
+//               ticketId++;
+//               mp.put(ticketId,new Pair(this.busNo,this.seats));
+//               for(int i=0;i<seats;i++)seatNo.add(no++);
+//               setTotalCost(b.getPricePerTicket()*seats);
+//               b.setSeatNo(b.getSeatNo()+seats);
+//
+//               b.setProfitPerBus(b.getProfitPerBus()+totalCost);
+//               Bus.setTotalEarnings(Bus.getTotalEarnings()+totalCost);
+//               return true;
+//           }
+//       }
         try{
-            return BusBook.BusBookIfAvailable(this);
-        }catch(SQLException e){
-            System.out.println(e);
+            return busbook.BusBookIfAvailable(this);
+        }catch(Exception e){
+//            System.out.println(e);
+            return false;
+
         }
 
-       return false;
    }
 
     private void generateTicket(){
