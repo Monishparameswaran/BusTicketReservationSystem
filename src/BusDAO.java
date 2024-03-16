@@ -12,12 +12,13 @@ public class BusDAO {
 
         ps.setInt(1, obj.getSeatNo());
         ps.setInt(2, Bus.getTotCapacity());
-        ps.setInt(3, obj.getCapacity());
+        ps.setInt(3, Bus.getTotCapacity());
         ps.setBoolean(4, obj.getAC());
         ps.setInt(5, obj.getProfitPerBus());
         ps.setInt(6, Bus.getTotalEarnings());
         ps.setInt(7,obj.getPricePerTicket());
         int rowsInserted = ps.executeUpdate();
+        DatabaseConnect.close();
         if(rowsInserted>0)return true;
         return false;
     }
@@ -36,11 +37,12 @@ public class BusDAO {
             System.out.println("------------------------------");
             System.out.println("Bus no: "+ rs.getInt("id"));
             System.out.println("Capacity of Bus: "+rs.getInt("totCapacity"));
-            System.out.println("Empty Seats : "+(rs.getInt("totCapacity")-rs.getInt("capacity")));
-            System.out.println("Earning from Bus: "+(rs.getInt("totCapacity")-rs.getInt("capacity"))*rs.getInt("pricePerTicket"));
+            System.out.println("Empty Seats : "+rs.getInt("capacity"));
+            System.out.println("Earning from Bus: "+(rs.getInt("profitPerBus")));
             System.out.println("------------------------------");
             System.out.println();
         }
+        DatabaseConnect.close();
     }
     public static void getBusDetailsForCustomer() throws SQLException{
         Statement st=DatabaseConnect.getStatement();
@@ -49,11 +51,12 @@ public class BusDAO {
             System.out.println("------------------------------");
             System.out.println("Bus no: "+ rs.getInt("id"));
             System.out.println("Capacity of Bus: "+rs.getInt("totCapacity"));
-            System.out.println("Empty Seats : "+(rs.getInt("totCapacity")-rs.getInt("capacity")));
+            System.out.println("Empty Seats : "+rs.getInt("capacity"));
             System.out.println("PricePerTicket: "+rs.getInt("pricePerTicket"));
             System.out.println("------------------------------");
             System.out.println();
         }
+        DatabaseConnect.close();
     }
 
 }
