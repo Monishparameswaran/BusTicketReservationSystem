@@ -1,3 +1,4 @@
+import javax.crypto.spec.PSource;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
@@ -23,8 +24,9 @@ public class Bus implements AdminInterface{
         setName(in.nextInt());
         System.out.println();
         System.out.print("Enter capacity of Bus: ");
-        setCapacity(in.nextInt());
-        setTotCapacity(getCapacity());
+
+        setTotCapacity(in.nextInt());
+        setCapacity(0);
         System.out.println();
         System.out.print("is it AC : (True or False) :");
         setAC(in.nextBoolean());
@@ -36,8 +38,8 @@ public class Bus implements AdminInterface{
         try{
             if(busDAO.insert(this)) System.out.println("Successfully added the bus");
             else System.out.println("Cannot add the bus");
-        }catch (SQLException e) {
-            throw new RuntimeException(e);
+        }catch (Exception e) {
+            System.out.println("Error at adding bus");
         }
 
     }
@@ -101,7 +103,8 @@ public class Bus implements AdminInterface{
             BusDAO.getBusDetailsForAdmin();
             System.out.println("-------------------------------------");
         }catch(SQLException e){
-            System.out.println(e);
+//            System.out.println(e);
+
         }
 
         System.out.println("Total Earnings: "+ Bus.getTotalEarnings());
@@ -137,7 +140,7 @@ public class Bus implements AdminInterface{
     }
 
     public  void setCapacity(int capacity) {
-        this.capacity = capacity;
+        this.capacity = 0;
     }
 
     public boolean getAC() {
